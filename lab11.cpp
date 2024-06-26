@@ -1,25 +1,37 @@
 ﻿#include <iostream>
 
 int main() {
- 
-    bool* pBool1 = nullptr;
-    bool* pBool2 = nullptr;
+    int n;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> n;
 
+    // Dynamically allocate memory for the array
+    int* p = new int[n];
 
-    pBool1 = new bool;
-    pBool2 = new bool;
+    // Fill the array with values
+    std::cout << "Enter the elements of the array:\n";
+    for (int i = 0; i < n; ++i) {
+        std::cin >> p[i];
+    }
 
+    // Process the array: square positive elements
+    for (int i = 0; i < n; ++i) {
+        if (p[i] > 0) {
+            p[i] = p[i] * p[i];
+        }
+    }
 
-    *pBool1 = true;
-    *pBool2 = false;
+    // Output the modified array
+    std::cout << "Modified array:\n";
+    for (int i = 0; i < n; ++i) {
+        std::cout << p[i] << " ";
+    }
+    std::cout << std::endl;
 
-
-    std::cout << "Value pointed to by pBool1: " << std::boolalpha << *pBool1 << std::endl;
-    std::cout << "Value pointed to by pBool2: " << std::boolalpha << *pBool2 << std::endl;
-
-
-    delete pBool1;
-    delete pBool2;
+    // Free the allocated memory
+    delete[] p;
 
     return 0;
 }
+
+
